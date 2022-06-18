@@ -35,7 +35,7 @@ class CustomEloquentBuilderTest
         return ModelWithCustomBuilder::type('foo');
     }
 
-    /** @phpstan-return HasMany<ModelWithCustomBuilder> */
+    /** @phpstan-return HasMany<ModelWithCustomBuilder, FooModel> */
     public function testCustomBuilderMethodThroughRelation(): HasMany
     {
         $foo = new FooModel();
