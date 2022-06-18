@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use function get_class;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
@@ -86,12 +87,13 @@ class User extends Authenticatable
         return $this->belongsTo(Group::class)->withTrashed();
     }
 
-    /** @phpstan-return HasMany<Account> */
+    /** @phpstan-return HasMany<Account, User> */
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
     }
 
+    /** @phpstan-return HasManyThrough<Transaction, User, Account, Collection<Transaction>> */
     public function transactions(): HasManyThrough
     {
         return $this->hasManyThrough(Transaction::class, Account::class);
