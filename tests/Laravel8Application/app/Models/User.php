@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Model
 {
-    /** @phpstan-return HasMany<Account> */
+    /** @phpstan-return HasMany<Account, User> */
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
